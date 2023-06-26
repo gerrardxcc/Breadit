@@ -1,10 +1,11 @@
-import { ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
-import { formatDistanceToNowStrict } from 'date-fns'
-import locale from 'date-fns/locale/en-US'
+import { ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { formatDistanceToNowStrict } from 'date-fns';
+import locale from 'date-fns/locale/en-US';
 
+//  my-2 mx-2 -> m-2
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 const formatDistanceLocale = {
@@ -24,25 +25,25 @@ const formatDistanceLocale = {
   xYears: '{{count}}y',
   overXYears: '{{count}}y',
   almostXYears: '{{count}}y',
-}
+};
 
 function formatDistance(token: string, count: number, options?: any): string {
-  options = options || {}
+  options = options || {};
 
   const result = formatDistanceLocale[
     token as keyof typeof formatDistanceLocale
-  ].replace('{{count}}', count.toString())
+  ].replace('{{count}}', count.toString());
 
   if (options.addSuffix) {
     if (options.comparison > 0) {
-      return 'in ' + result
+      return 'in ' + result;
     } else {
-      if (result === 'just now') return result
-      return result + ' ago'
+      if (result === 'just now') return result;
+      return result + ' ago';
     }
   }
 
-  return result
+  return result;
 }
 
 export function formatTimeToNow(date: Date): string {
@@ -52,5 +53,5 @@ export function formatTimeToNow(date: Date): string {
       ...locale,
       formatDistance,
     },
-  })
+  });
 }
