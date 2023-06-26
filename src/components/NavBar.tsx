@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Icons } from './Icons';
+import { buttonVariants } from '@/components/ui/Button';
 
 const NavBar = async () => {
   return (
@@ -11,6 +12,11 @@ const NavBar = async () => {
           <p className='hidden text-zinc-700 text-sm font-medium md:block'>
             Breadit
           </p>
+        </Link>
+        {/* Search Bar */}
+
+        <Link href='/sign-in' className={buttonVariants()}>
+          Sign In
         </Link>
       </div>
     </div>
