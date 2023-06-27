@@ -1,7 +1,8 @@
 import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
-import NavBar from '@/components/NavBar';
+import Navbar from '@/components/Navbar';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata = {
   title: 'Breadit',
@@ -20,11 +21,16 @@ export default function RootLayout({
       lang='en'
       className={cn('bg-white to-slate-900 antialiased light', inter.className)}
     >
-      <body className='max-h-screen pt-12 bg-slate-50 antialiased'>
-        <NavBar />
+      <body
+        className='max-h-screen pt-12 bg-slate-50 antialiased'
+        suppressHydrationWarning={true}
+      >
+        {/* @ts-expect-error Server Component */}
+        <Navbar />
         <div className='container max-w-7xl mx-auto h-full pt-12'>
           {children}
         </div>
+        <Toaster />
       </body>
     </html>
   );
