@@ -1,12 +1,12 @@
 'use client';
 
-import UserAvatar from '@/components/UserAvatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { ImageIcon, Link2 } from 'lucide-react';
-import { Session } from 'next-auth';
-import { usePathname, useRouter } from 'next/navigation';
+import { Image as ImageIcon, Link2 } from 'lucide-react';
 import { FC } from 'react';
+import { UserAvatar } from './UserAvatar';
+import type { Session } from 'next-auth';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface MiniCreatePostProps {
   session: Session | null;
@@ -30,19 +30,18 @@ const MiniCreatePost: FC<MiniCreatePostProps> = ({ session }) => {
           <span className='absolute bottom-0 right-0 rounded-full w-3 h-3 bg-green-500 outline outline-2 outline-white' />
         </div>
         <Input
+          onClick={() => router.push(pathname + '/submit')}
           readOnly
-          onClick={() => router.push(pathname + './submit')}
           placeholder='Create post'
         />
-
         <Button
-          onClick={() => router.push(pathname + './submit')}
+          onClick={() => router.push(pathname + '/submit')}
           variant='ghost'
         >
           <ImageIcon className='text-zinc-600' />
         </Button>
         <Button
-          onClick={() => router.push(pathname + './submit')}
+          onClick={() => router.push(pathname + '/submit')}
           variant='ghost'
         >
           <Link2 className='text-zinc-600' />

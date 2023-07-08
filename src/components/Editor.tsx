@@ -185,15 +185,14 @@ const Editor: FC<EditorProps> = ({ subredditId }) => {
           <TextareaAutosize
             ref={(e) => {
               titleRef(e);
-
               // @ts-ignore
               _titleRef.current = e;
             }}
             {...rest}
             placeholder='Title'
-            className='w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:online-none'
+            className='w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none'
           />
-          <div id='editor' className='max-h-[500px]' />
+          <div id='editor' className='min-h-[500px]' />
           <p className='text-sm text-gray-500'>
             Use{' '}
             <kbd className='rounded-md border bg-muted px-1 text-xs uppercase'>
