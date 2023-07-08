@@ -3,12 +3,13 @@ import { db } from '@/lib/db';
 import { redis } from '@/lib/redis';
 import { PostVoteValidator } from '@/lib/validators/vote';
 import { CachedPost } from '@/types/redis';
+import { z } from 'zod';
 
 const CACHE_AFTER_UPVOTES = 1;
 
 export async function PATCH(req: Request) {
   try {
-    const body = req.json();
+    const body = await req.json();
 
     const { postId, voteType } = PostVoteValidator.parse(body);
 
@@ -106,6 +107,18 @@ export async function PATCH(req: Request) {
         currentVote: voteType,
         createdAt: post.createdAt,
       };
+
+      await redis.hset(`post:${postId}`, cachePayload);
     }
-  } catch (error) {}
+
+    return new Response('OK');
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return new Response('Invalid POST request data passed', { status: 422 });
+    }
+
+    return new Response('Could not register your vote. Please try again', {
+      status: 500,
+    });
+  }
 }
