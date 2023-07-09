@@ -35,6 +35,7 @@ export async function PATCH(req: Request) {
         votes: true,
       },
     });
+
     if (!post) {
       return new Response('Post not found', { status: 404 });
     }
@@ -50,6 +51,7 @@ export async function PATCH(req: Request) {
         });
         return new Response('OK');
       }
+
       await db.vote.update({
         where: {
           userId_postId: {
