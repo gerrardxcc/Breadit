@@ -28,7 +28,7 @@ const page = async ({ params }: PageProps) => {
         },
         orderBy: {
           createdAt: 'desc',
-        },
+        }, // just changed this to desc to avoid post duplicated
 
         take: INFINITE_SCROLL_PAGINATION_RESULTS,
       },
