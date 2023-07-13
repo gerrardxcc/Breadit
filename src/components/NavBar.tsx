@@ -3,6 +3,7 @@ import { Icons } from './Icons';
 import { buttonVariants } from '@/components/ui/button';
 import { getAuthSession } from '@/lib/auth';
 import { UserAccountNav } from '@/components/UserAccountNav';
+import SearchBar from '@/components/SearchBar';
 
 const NavBar = async () => {
   const session = await getAuthSession();
@@ -18,6 +19,8 @@ const NavBar = async () => {
           </p>
         </Link>
         {/* Search Bar */}
+        <SearchBar />
+
         {session?.user ? (
           <UserAccountNav user={session.user} />
         ) : (
