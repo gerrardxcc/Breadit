@@ -5,17 +5,22 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandInput,
+  CommandItem,
   CommandList,
 } from '@/components/ui/command';
 import { Prisma, Subreddit } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { FC, useState } from 'react';
+import debounce from 'lodash.debounce';
+import { Users } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { FC, useCallback, useState } from 'react';
 
 interface SearchBarProps {}
 
 const SearchBar: FC<SearchBarProps> = ({}) => {
   const [input, setInput] = useState<string>('');
+
   const {
     data: queryResults,
     refetch,
@@ -32,12 +37,24 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     queryKey: ['search-query'],
     enabled: false,
   });
+
+  const request = debounce(() => {
+    refetch();
+  }, 300);
+
+  const debounceRequest = useCallback(() => {
+    request();
+  }, []);
+
+  const router = useRouter();
+
   return (
     <Command className='relative rounded-lg border max-w-lg z-50 overflow-visible'>
       <CommandInput
         value={input}
         onValueChange={(text) => {
           setInput(text);
+          debounceRequest();
         }}
         className='outline-none border-none focus:border-none focus:outline-none ring-0'
         placeholder='Search Communities...'
@@ -46,7 +63,21 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
         <CommandList className='absolute bg-white top-full inset-x-0 shadow rounded-b-md'>
           {isFetched && <CommandEmpty>No results found</CommandEmpty>}
           {(queryResults?.length ?? 0) > 0 ? (
-            <CommandGroup heading='Communities'></CommandGroup>
+            <CommandGroup heading='Communities'>
+              {queryResults?.map((subreddit) => (
+                <CommandItem
+                  key={subreddit.id}
+                  value={subreddit.name}
+                  onSelect={(e) => {
+                    router.push(`/r/${e}`);
+                    router.refresh();
+                  }}
+                >
+                  <Users className='mr-2 h-4 w-4' />
+                  <a href={`/r/${subreddit.name}`}>/r/{subreddit.name}</a>
+                </CommandItem>
+              ))}
+            </CommandGroup>
           ) : null}
         </CommandList>
       ) : null}
