@@ -1,4 +1,5 @@
 import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle';
+import ToFeedButton from '@/components/ToFeedButton';
 // import ToFeedButton from '@/components/ToFeedButton';
 import { buttonVariants } from '@/components/ui/button';
 import { getAuthSession } from '@/lib/auth';
@@ -63,7 +64,7 @@ const Layout = async ({
   return (
     <div className='sm:container max-w-7xl mx-auto h-full pt-12'>
       <div>
-        {/* <ToFeedButton /> */}
+        <ToFeedButton />
 
         <div className='grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-x-4 py-6'>
           <ul className='flex flex-col col-span-2 space-y-6'>{children}</ul>
