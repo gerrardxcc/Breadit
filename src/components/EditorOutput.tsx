@@ -28,14 +28,13 @@ const style = {
 
 const EditorOutput: FC<EditorOutputProps> = ({ content }) => {
   return (
-    <>
-      <Output
-        style={style}
-        className='text-sm'
-        renderers={renderers}
-        data={content}
-      />
-    </>
+    // @ts-ignore
+    <Output
+      style={style}
+      className='text-sm'
+      renderers={renderers}
+      data={content}
+    />
   );
 };
 
