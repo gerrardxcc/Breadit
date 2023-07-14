@@ -1,7 +1,7 @@
 import CommentsSection from '@/components/CommentsSection';
 import EditorOutput from '@/components/EditorOutput';
 import PostVoteServer from '@/components/post-vote/PostVoteServer';
-import { buttonVariants } from '@/components/ui/button';
+import { ButtonVariants } from '@/components/ui/button';
 import { db } from '@/lib/db';
 import { redis } from '@/lib/redis';
 import { formatTimeToNow } from '@/lib/utils';
@@ -90,7 +90,7 @@ function PostVoteShell() {
   return (
     <div className='flex items-center flex-col pr-6 w-20'>
       {/* upvote */}
-      <div className={buttonVariants({ variant: 'ghost' })}>
+      <div className={ButtonVariants({ variant: 'ghost' })}>
         <ArrowBigUp className='h-5 w-5 to-zinc-700' />
       </div>
 
@@ -100,7 +100,7 @@ function PostVoteShell() {
       </div>
 
       {/* downvote */}
-      <div className={buttonVariants({ variant: 'ghost' })}>
+      <div className={ButtonVariants({ variant: 'ghost' })}>
         <ArrowBigDown className='h-5 w-5 to-zinc-700' />
       </div>
     </div>
