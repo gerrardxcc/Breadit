@@ -1,4 +1,4 @@
-import { ButtonVariants } from '@/components/ui/Button';
+import { ButtonVariants } from '@/components/ui/button';
 import { toast } from '@/hooks/use-toast';
 import Link from 'next/link';
 

@@ -1,6 +1,6 @@
 import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle';
 import ToFeedButton from '@/components/ToFeedButton';
-import { ButtonVariants } from '@/components/ui/Button';
+import { ButtonVariants } from '@/components/ui/button';
 import { getAuthSession } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { format } from 'date-fns';

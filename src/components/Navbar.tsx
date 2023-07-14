@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Icons } from './Icons';
-import { ButtonVariants } from '@/components/ui/Button';
+import { ButtonVariants } from '@/components/ui/button';
 import { getAuthSession } from '@/lib/auth';
 import { UserAccountNav } from '@/components/UserAccountNav';
 import SearchBar from '@/components/SearchBar';

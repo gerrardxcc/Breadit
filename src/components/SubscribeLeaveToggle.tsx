@@ -1,5 +1,5 @@
 'use client';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { SubscribeToSubredditPayload } from '@/lib/validators/subreddit';
 import { useMutation } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';

@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 import { FC, useRef, useState } from 'react';
 import CommentVotes from '../CommentVotes';
 import { UserAvatar } from '../UserAvatar';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { toast } from '../../hooks/use-toast';
