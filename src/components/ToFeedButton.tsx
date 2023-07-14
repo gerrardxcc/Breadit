@@ -2,7 +2,7 @@
 
 import { ChevronLeft } from 'lucide-react';
 import { usePathname } from 'next/navigation';
-import { ButtonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 
 const ToFeedButton = () => {
   const pathname = usePathname();
@@ -13,7 +13,7 @@ const ToFeedButton = () => {
   const subredditPath = getSubredditPath(pathname);
 
   return (
-    <a href={subredditPath} className={ButtonVariants({ variant: 'ghost' })}>
+    <a href={subredditPath} className={buttonVariants({ variant: 'ghost' })}>
       <ChevronLeft className='h-4 w-4 mr-1' />
       {subredditPath === '/' ? 'Back home' : 'Back to community'}
     </a>

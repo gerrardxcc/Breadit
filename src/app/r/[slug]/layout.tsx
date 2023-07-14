@@ -1,6 +1,6 @@
 import SubscribeLeaveToggle from '@/components/SubscribeLeaveToggle';
 import ToFeedButton from '@/components/ToFeedButton';
-import { ButtonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { getAuthSession } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { format } from 'date-fns';
@@ -102,7 +102,7 @@ const Layout = async ({
                 />
               ) : null}
               <Link
-                className={ButtonVariants({
+                className={buttonVariants({
                   variant: 'outline',
                   className: 'w-full mb-6',
                 })}
